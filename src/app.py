@@ -37,14 +37,24 @@ st.sidebar.write("Architecture: Custom CNN")
 st.sidebar.write("Input Size: 128×128")
 st.sidebar.write("Trained on: APTOS 2019")
 
-# Show a random Grad-CAM sample
-sample_images = [
-    Path(__file__).parent.parent / "visuals" / "gradcam_62ecdc90dd42.png",
-    Path(__file__).parent.parent / "visuals" / "gradcam_61ac9b0dc6b9.png",
-    Path(__file__).parent.parent / "visuals" / "gradcam_300305ce82d2.png"
-]
-chosen_image = random.choice(sample_images)
-st.sidebar.image(chosen_image, caption="Grad-CAM Sample")
+# Path to visuals directory for Grad-CAM samples
+visuals_dir = Path(__file__).parent.parent / "visuals"
+
+# Sidebar: Grad-CAM preview (optional)
+if visuals_dir.exists():
+    gradcam_images = list(visuals_dir.glob("gradcam_*.png"))
+
+    if gradcam_images:
+        chosen_image = random.choice(gradcam_images)
+        st.sidebar.image(
+            chosen_image,
+            caption="Grad-CAM Sample",
+            use_column_width=True
+        )
+    else:
+        st.sidebar.info("Grad-CAM visualizations will appear after prediction.")
+else:
+    st.sidebar.info("Grad-CAM visualizations generated at runtime.")
 
 # === Streamlit UI ===
 st.title("Diabetic Retinopathy Classifier")
