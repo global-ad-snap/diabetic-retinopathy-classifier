@@ -1,0 +1,24 @@
+# Large datasets
+data/train_images/
+data/test_images/
+
+# PyTorch models (keep only best_model.pth if desired)
+*.ckpt
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
+
