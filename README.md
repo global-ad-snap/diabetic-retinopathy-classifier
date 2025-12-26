@@ -3,6 +3,15 @@ A deep learning web app for diagnosing diabetic retinopathy from retinal fundus 
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Dataset](https://img.shields.io/badge/Dataset-APTOS%202019-orange)
+![Model](https://img.shields.io/badge/Model-CNN-green)
+![Explainability](https://img.shields.io/badge/Explainability-Grad--CAM%20%7C%20SHAP-purple)
+
+## 🚀 Live Demo
+Try the deployed Streamlit app:  
+🔗 https://diabetic-retinopathy-classifier-globaladsnap.streamlit.app/  
+
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetic-retinopathy-classifier-globaladsnap.streamlit.app/)
 
 ## Overview
 This project uses a convolutional neural network (CNN) trained on the APTOS 2019 dataset to classify retinal images into diabetic retinopathy stages. The app provides both predictions and visual explanations using Grad-CAM and SHAP, helping clinicians and researchers explore model behavior and decision patterns.
