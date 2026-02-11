@@ -16,7 +16,7 @@ Try the deployed Streamlit app:
 ## Overview
 This project uses a convolutional neural network (CNN) trained on the APTOS 2019 dataset to classify retinal images into diabetic retinopathy stages. The app provides both predictions and visual explanations using Grad-CAM and SHAP, helping clinicians and researchers explore model behavior and decision patterns.
 
-
+---
 ## Intended Use
 
 This project is intended as a **research and decision-support prototype** demonstrating the application of deep learning techniques to retinal fundus images for diabetic retinopathy classification.
@@ -51,6 +51,7 @@ Acting as a proof-of-concept for startups or research teams developing early-sta
 
 These applications assume **retrospective analysis and population-level screening contexts** and are **not intended for real-time clinical diagnosis or treatment decisions without prospective validation and regulatory approval**.
 
+---
 ## Features
 - Custom CNN architecture trained on real-world medical data  
 - Grad-CAM overlays to highlight regions influencing predictions  
@@ -59,6 +60,7 @@ These applications assume **retrospective analysis and population-level screenin
 - Downloadable Grad-CAM and SHAP images  
 - Side-by-side comparison toggle for interpretability  
 
+---
 ## Project structure
 ```
 diabetic-retinopathy-classifier/
@@ -97,7 +99,7 @@ diabetic-retinopathy-classifier/
                                   # Final project report (PDF)
 ```
 
-
+---
 ## Installation & Setup
 
 ### 1. Clone the repository
@@ -151,6 +153,7 @@ streamlit run src/app.py
      - Inspect SHAP pixel attributions
      - Downloadable visualizations
 
+---
 ## Results & Screenshots
 
 The following visualizations illustrate how the model interprets retinal images to make predictions:
@@ -178,6 +181,7 @@ Interpretability methods are applied post-hoc and reflect model behavior on the 
 
 Interpretability outputs should be interpreted as tools for model transparency and error analysis rather than explanations of underlying disease pathology.
 
+---
 ## Tech Stack
 
 - **Framework**: Streamlit  
@@ -186,6 +190,7 @@ Interpretability outputs should be interpreted as tools for model transparency a
 - **Data**: APTOS 2019 Blindness Detection Dataset  
 - **Tools**: PIL, matplotlib, numpy, torchvision  
 
+---
 ## Model Info
 
 - **Architecture**: Custom CNN  
@@ -197,6 +202,7 @@ Interpretability outputs should be interpreted as tools for model transparency a
 - Python 3.9 or 3.10 recommended
 - PyTorch (CPU or CUDA)
 
+---
 ## Consulting Use Case
 
 This project demonstrates capabilities relevant to:
@@ -209,6 +215,7 @@ This project demonstrates capabilities relevant to:
 
 In a consulting context, this work would be delivered as a **prototype decision-support system**, accompanied by documentation outlining model performance, limitations, and ethical considerations.
 
+---
 ## Deployment Considerations
 
 ### Operational Integration
@@ -247,7 +254,7 @@ Deployment should consider:
 
 Formal validation would be required before operational use.
 
-
+---
 ## Clinical Impact
 
 ### Potential Value Drivers
@@ -281,7 +288,44 @@ Typical ROI evaluation would include:
 
 Formal ROI validation requires real-world deployment data.
 
+---
+## Validation & Reliability Considerations
 
+### Dataset Limitations
+
+Results are dependent on dataset scope, quality, and representativeness. Potential limitations include sample bias, missing data, and historical data constraints. External validation on independent datasets would be required before operational deployment.
+
+### Model Validation Approach
+
+Validation methods may include:
+
+- Train/test separation or cross-validation
+- Performance metrics relevant to the use case
+- Sensitivity to class imbalance where applicable
+- Error pattern analysis
+
+These steps help estimate generalization performance but do not replace real-world validation.
+
+### Clinical / Operational Validation Requirements
+
+For healthcare or high-stakes applications, additional validation typically includes:
+
+- Prospective evaluation in operational settings
+- Clinical or domain expert review
+- Workflow compatibility testing
+- Safety and performance monitoring after deployment
+
+Formal regulatory approval may be required depending on jurisdiction and intended use.
+
+### Performance Interpretation
+
+Model outputs should be interpreted cautiously:
+
+- Predictions support, not replace, expert decision-making
+- Performance metrics reflect dataset conditions
+- Continuous monitoring is recommended post-deployment
+
+---
 ## Client-Ready Deliverables 
 In a real-world consulting engagement, this project would be delivered as:
 - Cleaned and documented dataset
@@ -290,6 +334,9 @@ In a real-world consulting engagement, this project would be delivered as:
 - Explainability artifacts (SHAP / Grad-CAM where applicable)
 - Interactive demo or dashboard (Streamlit)
 - Model card and risk & limitation documentation
+
+---
+
 
 ## License
 
