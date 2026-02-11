@@ -186,8 +186,6 @@ Interpretability outputs should be interpreted as tools for model transparency a
 - **Data**: APTOS 2019 Blindness Detection Dataset  
 - **Tools**: PIL, matplotlib, numpy, torchvision  
 
-
-
 ## Model Info
 
 - **Architecture**: Custom CNN  
@@ -210,6 +208,44 @@ This project demonstrates capabilities relevant to:
 - Technical documentation and reporting for healthcare AI projects
 
 In a consulting context, this work would be delivered as a **prototype decision-support system**, accompanied by documentation outlining model performance, limitations, and ethical considerations.
+
+## Deployment Considerations
+
+### Operational Integration
+
+Potential deployment environments include clinical decision support systems, business analytics platforms, or API-based inference pipelines. Integration considerations include data availability, workflow compatibility, and stakeholder usability.
+
+### Model Monitoring
+
+Recommended post-deployment monitoring:
+
+- Model performance drift detection
+- Data distribution monitoring
+- KPI tracking aligned with business or clinical outcomes
+- Periodic model recalibration
+
+Continuous monitoring is essential to maintain reliability.
+
+### Human Oversight
+
+For high-impact decisions:
+
+- Human-in-the-loop review recommended
+- AI outputs positioned as decision support rather than autonomous decision-making
+- Clear escalation pathways for uncertain predictions
+
+This is particularly critical in healthcare and financial risk contexts.
+
+### Governance & Compliance Awareness
+
+Deployment should consider:
+
+- Data privacy requirements
+- Auditability and reproducibility
+- Documentation of validation evidence
+- Regulatory context where applicable (e.g., healthcare AI)
+
+Formal validation would be required before operational use.
 
 ## Client-Ready Deliverables 
 In a real-world consulting engagement, this project would be delivered as:
