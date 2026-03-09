@@ -75,16 +75,7 @@ diabetic-retinopathy-classifier/
 ├── src/                           # Source code
 │   ├── app.py                     # Streamlit web application
 │   ├── train.py                   # Model training script
-│   ├── evaluate.py                # Model evaluation and metrics
-│   ├── models.py                  # CNN architecture definitions
-│   ├── data_utils.py              # Data loading and preprocessing
-│   ├── diabetic_retinopathy.py    # Core classification logic
-│   ├── explain.py                 # Explainability (Grad-CAM, SHAP)
-│   ├── loss_curve.py              # Training loss visualization
-│   ├── roc_auc_plot.py            # ROC-AUC curve plotting
-│   ├── confusion_matrix_plot.py   # Confusion matrix visualization
-│   └── dr_pipeline_demo.ipynb     # End-to-end notebook demo (optional)
-│
+│   └── evaluate.py                # Model evaluation and metrics
 ├── visuals/                       # Selected visual results
 │   ├── class_distribution.png     # Dataset class balance
 │   ├── confusion_matrix.png       # Final confusion matrix
