@@ -73,9 +73,9 @@ diabetic-retinopathy-classifier/
 │   └── README.md                  # Dataset source and download instructions
 │
 ├── src/                           # Source code
-│   ├── app.py                     # Streamlit web application
 │   ├── train.py                   # Model training script
-│   └── evaluate.py                # Model evaluation and metrics
+│   ├── evaluate.py                # Model evaluation and metrics
+│   └── app.py                     # Streamlit web application
 ├── visuals/                       # Selected visual results
 │   ├── class_distribution.png     # Dataset class balance
 │   ├── confusion_matrix.png       # Final confusion matrix
