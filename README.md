@@ -14,7 +14,7 @@ Try the deployed Streamlit app:
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetic-retinopathy-classifier-globaladsnap.streamlit.app/)
 
 ## Overview
-This project uses a convolutional neural network (CNN) trained on the APTOS 2019 dataset to classify retinal images into diabetic retinopathy stages. The app provides both predictions and visual explanations using Grad-CAM and SHAP, helping clinicians and researchers explore model behavior and decision patterns.
+This project implements an explainable deep learning system for grading diabetic retinopathy (DR) from retinal fundus images using ResNet-18 transfer learning trained on the APTOS 2019 Blindness Detection dataset. The model predicts DR severity across five stages (0–4) and provides visual explanations using Grad-CAM and SHAP to highlight retinal regions influencing predictions. A Streamlit web application enables users to upload retinal images, obtain DR severity predictions, and inspect interpretability visualizations for research, educational, and screening-support purposes.
 
 ---
 ## Intended Use
@@ -53,7 +53,7 @@ These applications assume **retrospective analysis and population-level screenin
 
 ---
 ## Features
-- Custom CNN architecture trained on real-world medical data  
+- ResNet-18 transfer learning model trained on the APTOS 2019 retinal dataset  
 - Grad-CAM overlays to highlight regions influencing predictions  
 - SHAP visualizations for pixel-level feature attribution  
 - Streamlit interface for easy image upload and exploration  
@@ -75,6 +75,7 @@ diabetic-retinopathy-classifier/
 ├── src/                           # Source code
 │   ├── train.py                   # Model training script
 │   ├── evaluate.py                # Model evaluation and metrics
+│   ├── models.py                  # ResNet-18 architecture 
 │   └── app.py                     # Streamlit web application
 ├── visuals/                       # Selected visual results
 │   ├── class_distribution.png     # Dataset class balance
@@ -184,10 +185,11 @@ Interpretability outputs should be interpreted as tools for model transparency a
 ---
 ## Model Info
 
-- **Architecture**: Custom CNN  
-- **Input Size**: 128×128  
+- **Architecture**: ResNet-18 (Transfer Learning)  
+- **Input Size**: 224 x 224  
 - **Classes**: No DR, Mild, Moderate, Severe, Proliferative DR  
-- **Training Dataset**: APTOS 2019  
+- **Training Dataset**: APTOS 2019
+- **Framework**: PyTorch
 
 ### Environment
 - Python 3.9 or 3.10 recommended
