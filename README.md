@@ -1,5 +1,5 @@
 # Diabetic Retinopathy Classifier
-A deep learning web app for diagnosing diabetic retinopathy from retinal fundus images, built with a custom CNN architecture and enhanced with visual interpretability tools.
+A deep learning web app for grading diabetic retinopathy severity from retinal fundus images using a ResNet-18 transfer learning model with integrated visual interpretability tools.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -14,12 +14,12 @@ Try the deployed Streamlit app:
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetic-retinopathy-classifier-globaladsnap.streamlit.app/)
 
 ## Overview
-This project uses a convolutional neural network (CNN) trained on the APTOS 2019 dataset to classify retinal images into diabetic retinopathy stages. The app provides both predictions and visual explanations using Grad-CAM and SHAP, helping clinicians and researchers explore model behavior and decision patterns.
+This project implements an explainable deep learning system for automated grading of diabetic retinopathy (DR) from retinal fundus images using ResNet-18 transfer learning trained on the APTOS 2019 Blindness Detection dataset. The model predicts DR severity across five stages (0–4) and provides visual explanations using Grad-CAM and SHAP to highlight retinal regions influencing predictions. A Streamlit web application enables users to upload retinal images, obtain DR severity predictions, and inspect interpretability visualizations for research, educational, and screening-support purposes.
 
-
+---
 ## Intended Use
 
-This project is intended as a **research and decision-support prototype** demonstrating the application of deep learning techniques to retinal fundus images for diabetic retinopathy classification.
+This project is intended as a **research and decision-support prototype** demonstrating the application of deep learning techniques to retinal fundus images for diabetic retinopathy severity grading.
 
 The system is designed for **educational purposes, technical evaluation, and exploratory analysis** only. It is not intended to be used as a standalone diagnostic tool or to replace professional clinical assessment.
 
@@ -51,14 +51,16 @@ Acting as a proof-of-concept for startups or research teams developing early-sta
 
 These applications assume **retrospective analysis and population-level screening contexts** and are **not intended for real-time clinical diagnosis or treatment decisions without prospective validation and regulatory approval**.
 
+---
 ## Features
-- Custom CNN architecture trained on real-world medical data  
+- ResNet-18 transfer learning model trained on the APTOS 2019 retinal dataset  
 - Grad-CAM overlays to highlight regions influencing predictions  
 - SHAP visualizations for pixel-level feature attribution  
 - Streamlit interface for easy image upload and exploration  
-- Downloadable Grad-CAM and SHAP images  
+- Downloadable Grad-CAM and SHAP visualization outputs
 - Side-by-side comparison toggle for interpretability  
 
+---
 ## Project structure
 ```
 diabetic-retinopathy-classifier/
@@ -71,18 +73,10 @@ diabetic-retinopathy-classifier/
 │   └── README.md                  # Dataset source and download instructions
 │
 ├── src/                           # Source code
-│   ├── app.py                     # Streamlit web application
 │   ├── train.py                   # Model training script
 │   ├── evaluate.py                # Model evaluation and metrics
-│   ├── models.py                  # CNN architecture definitions
-│   ├── data_utils.py              # Data loading and preprocessing
-│   ├── diabetic_retinopathy.py    # Core classification logic
-│   ├── explain.py                 # Explainability (Grad-CAM, SHAP)
-│   ├── loss_curve.py              # Training loss visualization
-│   ├── roc_auc_plot.py            # ROC-AUC curve plotting
-│   ├── confusion_matrix_plot.py   # Confusion matrix visualization
-│   └── dr_pipeline_demo.ipynb     # End-to-end notebook demo (optional)
-│
+│   ├── models.py                  # ResNet-18 architecture and model loading utilities 
+│   └── app.py                     # Streamlit web application
 ├── visuals/                       # Selected visual results
 │   ├── class_distribution.png     # Dataset class balance
 │   ├── confusion_matrix.png       # Final confusion matrix
@@ -97,7 +91,7 @@ diabetic-retinopathy-classifier/
                                   # Final project report (PDF)
 ```
 
-
+---
 ## Installation & Setup
 
 ### 1. Clone the repository
@@ -151,6 +145,7 @@ streamlit run src/app.py
      - Inspect SHAP pixel attributions
      - Downloadable visualizations
 
+---
 ## Results & Screenshots
 
 The following visualizations illustrate how the model interprets retinal images to make predictions:
@@ -178,27 +173,29 @@ Interpretability methods are applied post-hoc and reflect model behavior on the 
 
 Interpretability outputs should be interpreted as tools for model transparency and error analysis rather than explanations of underlying disease pathology.
 
+---
 ## Tech Stack
 
 - **Framework**: Streamlit  
-- **Model**: Custom lightweight CNN (PyTorch), trained from scratch on APTOS 2019 
+- **Model**: ResNet-18 transfer learning model (PyTorch), fine-tuned on the APTOS 2019 dataset 
 - **Visualization**: Grad-CAM (TorchCAM), SHAP  
 - **Data**: APTOS 2019 Blindness Detection Dataset  
 - **Tools**: PIL, matplotlib, numpy, torchvision  
 
-
-
+---
 ## Model Info
 
-- **Architecture**: Custom CNN  
-- **Input Size**: 128×128  
+- **Architecture**: ResNet-18 (Transfer Learning)  
+- **Input Size**: 224 x 224  
 - **Classes**: No DR, Mild, Moderate, Severe, Proliferative DR  
-- **Training Dataset**: APTOS 2019  
+- **Training Dataset**: APTOS 2019
+- **Framework**: PyTorch
 
 ### Environment
 - Python 3.9 or 3.10 recommended
 - PyTorch (CPU or CUDA)
 
+---
 ## Consulting Use Case
 
 This project demonstrates capabilities relevant to:
@@ -211,6 +208,117 @@ This project demonstrates capabilities relevant to:
 
 In a consulting context, this work would be delivered as a **prototype decision-support system**, accompanied by documentation outlining model performance, limitations, and ethical considerations.
 
+---
+## Deployment Considerations
+
+### Operational Integration
+
+Potential deployment environments include clinical decision support systems, business analytics platforms, or API-based inference pipelines. Integration considerations include data availability, workflow compatibility, and stakeholder usability.
+
+### Model Monitoring
+
+Recommended post-deployment monitoring:
+
+- Model performance drift detection
+- Data distribution monitoring
+- KPI tracking aligned with business or clinical outcomes
+- Periodic model recalibration
+
+Continuous monitoring is essential to maintain reliability.
+
+### Human Oversight
+
+For high-impact decisions:
+
+- Human-in-the-loop review recommended
+- AI outputs positioned as decision support rather than autonomous decision-making
+- Clear escalation pathways for uncertain predictions
+
+This is particularly critical in healthcare and financial risk contexts.
+
+### Governance & Compliance Awareness
+
+Deployment should consider:
+
+- Data privacy requirements
+- Auditability and reproducibility
+- Documentation of validation evidence
+- Regulatory context where applicable (e.g., healthcare AI)
+
+Formal validation would be required before operational use.
+
+---
+## Clinical Impact
+
+### Potential Value Drivers
+
+This project is designed to support measurable operational or financial impact, including:
+
+- Improved decision accuracy
+- Operational efficiency gains
+- Risk reduction
+- Resource optimization
+- Revenue protection or growth
+
+### Example Deployment Benefits
+
+Actual impact depends on deployment context, data quality, and operational integration. Potential benefits may include:
+
+- Reduced operational costs through earlier risk identification
+- Improved allocation of staff, inventory, or marketing resources
+- Enhanced decision support for clinical or business stakeholders
+- Increased transparency and confidence in analytics-driven decisions
+
+### Measurement Considerations
+
+Typical ROI evaluation would include:
+
+- Baseline vs post-deployment performance comparison
+- Cost savings analysis
+- Revenue uplift measurement
+- Error reduction metrics
+- Operational efficiency indicators
+
+Formal ROI validation requires real-world deployment data.
+
+---
+## Validation & Reliability Considerations
+
+### Dataset Limitations
+
+Results are dependent on dataset scope, quality, and representativeness. Potential limitations include sample bias, missing data, and historical data constraints. External validation on independent datasets would be required before operational deployment.
+
+### Model Validation Approach
+
+Validation methods may include:
+
+- Train/test separation or cross-validation
+- Performance metrics relevant to the use case
+- Sensitivity to class imbalance where applicable
+- Error pattern analysis
+
+These steps help estimate generalization performance but do not replace real-world validation.
+
+### Clinical / Operational Validation Requirements
+
+For healthcare or high-stakes applications, additional validation typically includes:
+
+- Prospective evaluation in operational settings
+- Clinical or domain expert review
+- Workflow compatibility testing
+- Safety and performance monitoring after deployment
+
+Formal regulatory approval may be required depending on jurisdiction and intended use.
+
+### Performance Interpretation
+
+Model outputs should be interpreted cautiously:
+
+- Predictions support, not replace, expert decision-making
+- Performance metrics reflect dataset conditions
+- Continuous monitoring is recommended post-deployment
+
+---
 ## Client-Ready Deliverables 
 In a real-world consulting engagement, this project would be delivered as:
 - Cleaned and documented dataset
@@ -219,6 +327,9 @@ In a real-world consulting engagement, this project would be delivered as:
 - Explainability artifacts (SHAP / Grad-CAM where applicable)
 - Interactive demo or dashboard (Streamlit)
 - Model card and risk & limitation documentation
+
+---
+
 
 ## License
 
