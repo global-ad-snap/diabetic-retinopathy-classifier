@@ -1,31 +1,21 @@
 # src/models.py
 
-import torch
+# src/models.py — updated to match train_fixed.py (ResNet-18)
 import torch.nn as nn
+from torchvision import models
 
 class DRClassifier(nn.Module):
-    """Custom CNN for Diabetic Retinopathy Classification"""
     def __init__(self, num_classes=5):
-        super(DRClassifier, self).__init__()
-        self.conv = nn.Sequential(
-            nn.Conv2d(3, 32, kernel_size=3, padding=1),
+        super().__init__()
+        backbone = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
+        self.backbone   = nn.Sequential(*list(backbone.children())[:-1])
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(512, 256),
             nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(32, 64, kernel_size=3, padding=1),
-            nn.ReLU(),
-            nn.MaxPool2d(2)
-        )
-        self.fc = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1, 1)),  # Output: (batch_size, 64, 1, 1)
-            nn.Flatten(),                  # Output: (batch_size, 64)
-            nn.Linear(64, 128),
-            nn.ReLU(),
-            nn.Dropout(0.5),
-            nn.Linear(128, num_classes)
+            nn.Dropout(0.4),
+            nn.Linear(256, num_classes)
         )
 
     def forward(self, x):
-        x = self.conv(x)
-        x = self.fc(x)
-        return x 
-
+        return self.classifier(self.backbone(x))
