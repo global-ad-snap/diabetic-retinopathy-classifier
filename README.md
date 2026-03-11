@@ -1,5 +1,5 @@
 # Diabetic Retinopathy Classifier
-A deep learning web app for diagnosing diabetic retinopathy from retinal fundus images, built with a custom CNN architecture and enhanced with visual interpretability tools.
+A deep learning web app for grading diabetic retinopathy severity from retinal fundus images using a ResNet-18 transfer learning model with integrated visual interpretability tools.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -14,12 +14,12 @@ Try the deployed Streamlit app:
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetic-retinopathy-classifier-globaladsnap.streamlit.app/)
 
 ## Overview
-This project implements an explainable deep learning system for grading diabetic retinopathy (DR) from retinal fundus images using ResNet-18 transfer learning trained on the APTOS 2019 Blindness Detection dataset. The model predicts DR severity across five stages (0–4) and provides visual explanations using Grad-CAM and SHAP to highlight retinal regions influencing predictions. A Streamlit web application enables users to upload retinal images, obtain DR severity predictions, and inspect interpretability visualizations for research, educational, and screening-support purposes.
+This project implements an explainable deep learning system for automated grading of diabetic retinopathy (DR) from retinal fundus images using ResNet-18 transfer learning trained on the APTOS 2019 Blindness Detection dataset. The model predicts DR severity across five stages (0–4) and provides visual explanations using Grad-CAM and SHAP to highlight retinal regions influencing predictions. A Streamlit web application enables users to upload retinal images, obtain DR severity predictions, and inspect interpretability visualizations for research, educational, and screening-support purposes.
 
 ---
 ## Intended Use
 
-This project is intended as a **research and decision-support prototype** demonstrating the application of deep learning techniques to retinal fundus images for diabetic retinopathy classification.
+This project is intended as a **research and decision-support prototype** demonstrating the application of deep learning techniques to retinal fundus images for diabetic retinopathy severity grading.
 
 The system is designed for **educational purposes, technical evaluation, and exploratory analysis** only. It is not intended to be used as a standalone diagnostic tool or to replace professional clinical assessment.
 
@@ -57,7 +57,7 @@ These applications assume **retrospective analysis and population-level screenin
 - Grad-CAM overlays to highlight regions influencing predictions  
 - SHAP visualizations for pixel-level feature attribution  
 - Streamlit interface for easy image upload and exploration  
-- Downloadable Grad-CAM and SHAP images  
+- Downloadable Grad-CAM and SHAP visualization outputs
 - Side-by-side comparison toggle for interpretability  
 
 ---
@@ -75,7 +75,7 @@ diabetic-retinopathy-classifier/
 ├── src/                           # Source code
 │   ├── train.py                   # Model training script
 │   ├── evaluate.py                # Model evaluation and metrics
-│   ├── models.py                  # ResNet-18 architecture 
+│   ├── models.py                  # ResNet-18 architecture and model loading utilities 
 │   └── app.py                     # Streamlit web application
 ├── visuals/                       # Selected visual results
 │   ├── class_distribution.png     # Dataset class balance
@@ -177,7 +177,7 @@ Interpretability outputs should be interpreted as tools for model transparency a
 ## Tech Stack
 
 - **Framework**: Streamlit  
-- **Model**: Custom lightweight CNN (PyTorch), trained from scratch on APTOS 2019 
+- **Model**: ResNet-18 transfer learning model (PyTorch), fine-tuned on the APTOS 2019 dataset 
 - **Visualization**: Grad-CAM (TorchCAM), SHAP  
 - **Data**: APTOS 2019 Blindness Detection Dataset  
 - **Tools**: PIL, matplotlib, numpy, torchvision  
