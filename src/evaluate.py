@@ -1,4 +1,4 @@
-# evaluate_fixed.py — matches ResNet train_fixed.py
+# src/evaluate.py
 import os
 import pandas as pd
 import numpy as np

@@ -1,3 +1,5 @@
+# src/ app.py
+
 import sys
 import warnings
 warnings.filterwarnings("ignore", message=".*use_column_width.*")

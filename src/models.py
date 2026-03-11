@@ -1,3 +1,5 @@
+# src/models.py
+
 # src/models.py — updated to match train_fixed.py (ResNet-18)
 import torch.nn as nn
 from torchvision import models
